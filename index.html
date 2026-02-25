@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ring op</title>
+<style>
+    body {
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .call-button {
+        background-color: #00ff00;
+        color: black;
+        font-size: 40px;
+        padding: 30px 80px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        font-weight: bold;
+        box-shadow: 0 0 30px #00ff00;
+    }
+
+    .call-button:active {
+        background-color: #00cc00;
+    }
+</style>
+</head>
+<body>
+
+<button class="call-button" onclick="startCall()">
+    RING OP
+</button>
+
+<script>
+function startCall() {
+    window.location.href = "intent://ringop#Intent;scheme=macrodroid;action=android.intent.action.VIEW;category=android.intent.category.DEFAULT;S.email=specialminds3@gmail.com;end;";
+}
+</script>
+
+</body>
+</html>
