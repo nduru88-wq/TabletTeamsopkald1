@@ -3,51 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <title>Ring op</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-  body {
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
-  .call-button {
-    background-color: #00ff00;
-    color: black;
-    font-size: 40px;
-    padding: 30px 80px;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: bold;
-    box-shadow: 0 0 30px #00ff00;
-  }
-  .call-button:active { background-color: #00cc00; }
+body {
+  background:black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  margin:0;
+  font-family:Arial, sans-serif;
+}
+
+.call-button {
+  background:#00ff00;
+  color:black;
+  font-size:40px;
+  padding:30px 80px;
+  border:none;
+  border-radius:20px;
+  font-weight:bold;
+  box-shadow:0 0 30px #00ff00;
+}
 </style>
 </head>
+
 <body>
 
-<button class="call-button" onclick="openChat()">RING OP</button>
+<button class="call-button" onclick="startCall()">
+RING OP
+</button>
 
 <script>
-function openChat() {
-  const toEmail = "specialminds3@gmail.com";
+function startCall() {
 
-  // Åbn chat i Teams appen (Android intent)
+  const email = "specialminds4@hotmail.com";
+
   const intentUrl =
-    "intent://teams.microsoft.com/l/chat/0/0?users=" + encodeURIComponent(toEmail) +
+    "intent://teams.microsoft.com/l/call/0/0?users=" +
+    encodeURIComponent(email) +
+    "&withVideo=true" +
     "#Intent;scheme=https;package=com.microsoft.teams;end";
 
-  // Fallback hvis intent ikke skulle virke
-  const httpsUrl =
-    "https://teams.microsoft.com/l/chat/0/0?users=" + encodeURIComponent(toEmail);
-
-  // Prøv intent først, fallback efter kort tid
   window.location.href = intentUrl;
-  setTimeout(() => { window.location.href = httpsUrl; }, 700);
 }
 </script>
 
