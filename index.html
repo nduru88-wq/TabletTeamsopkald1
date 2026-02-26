@@ -39,7 +39,15 @@
 
 <script>
 function startCall() {
-    window.location.href = "intent://ringop#Intent;scheme=macrodroid;action=android.intent.action.VIEW;category=android.intent.category.DEFAULT;S.email=specialminds3@gmail.com;end;";
+  // Trigger MacroDroid + send email som ekstra parameter
+  window.location.href =
+    "intent://ringop#Intent;" +
+    "scheme=macrodroid;" +
+    "action=android.intent.action.VIEW;" +
+    "category=android.intent.category.DEFAULT;" +
+    "package=com.arlosoft.macrodroid;" +
+    "S.email=specialminds3@gmail.com;" +
+    "end";
 }
 </script>
 
