@@ -1,50 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="da">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>Ring op</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <style>
-    body {
-        background-color: black;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        font-family: Arial, sans-serif;
-    }
+  body {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
 
-    .call-button {
-        background-color: #00ff00;
-        color: black;
-        font-size: 40px;
-        padding: 30px 80px;
-        border: none;
-        border-radius: 20px;
-        cursor: pointer;
-        font-weight: bold;
-        box-shadow: 0 0 30px #00ff00;
-    }
+  .call-button {
+    background-color: #00ff00;
+    color: black;
+    font-size: 40px;
+    padding: 30px 80px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 0 30px #00ff00;
+  }
 
-    .call-button:active {
-        background-color: #00cc00;
-    }
+  .call-button:active {
+    background-color: #00cc00;
+  }
 </style>
 </head>
-<body>
 
-<button class="call-button" onclick="startCall()">
-    RING OP
-</button>
+<body>
+<button class="call-button" onclick="startCall()">RING OP</button>
 
 <script>
 function startCall() {
-    // Åbner dit faste Teams-mødelink
-    window.location.href = "https://teams.live.com/meet/9384034558241?p=xK8txbHuXEyvCBJo4d";
+  // Teams deep link: start call to a user (optionally with video)
+  // Docs: /l/call/0/0?users=<email>&withVideo=true
+  const url = "https://teams.microsoft.com/l/call/0/0?users=" +
+              encodeURIComponent("pmn@specialminds.dk") +
+              "&withVideo=true";
+
+  // Force open in Teams app on Android (package com.microsoft.teams)
+  const intentUrl =
+    "intent://teams.microsoft.com/l/call/0/0?users=" +
+    encodeURIComponent("pmn@specialminds.dk") +
+    "&withVideo=true" +
+    "#Intent;scheme=https;package=com.microsoft.teams;end";
+
+  // Try intent first (best on Android kiosk). Fallback to normal https.
+  try {
+    window.location.href = intentUrl;
+    setTimeout(() => { window.location.href = url; }, 600);
+  } catch (e) {
+    window.location.href = url;
+  }
 }
 </script>
-
 </body>
 </html>
