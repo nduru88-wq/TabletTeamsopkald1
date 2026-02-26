@@ -4,36 +4,55 @@
 <meta charset="UTF-8">
 <title>Ring op</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
 body {
-  background:black;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-  margin:0;
-  font-family:Arial;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
+
 .call-button {
-  background:#00ff00;
-  color:black;
-  font-size:40px;
-  padding:30px 80px;
-  border:none;
-  border-radius:20px;
-  font-weight:bold;
-  box-shadow:0 0 30px #00ff00;
+  background: #0084ff;
+  color: white;
+  font-size: 40px;
+  padding: 30px 80px;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  box-shadow: 0 0 30px #0084ff;
+  cursor: pointer;
+}
+
+.call-button:active {
+  background: #006fd6;
 }
 </style>
 </head>
+
 <body>
 
-<button class="call-button" onclick="startCall()">RING OP</button>
+<button class="call-button" onclick="startCall()">
+RING OP
+</button>
 
 <script>
 function startCall() {
-  window.location.href =
-    "msteams://teams.microsoft.com/l/chat/0/0?users=specialminds4@hotmail.com";
+
+  const userId = "542384925";
+
+  const intentUrl =
+    "intent://user/" + userId +
+    "#Intent;" +
+    "scheme=fb-messenger;" +
+    "package=com.facebook.orca;" +
+    "end";
+
+  window.location.href = intentUrl;
 }
 </script>
 
